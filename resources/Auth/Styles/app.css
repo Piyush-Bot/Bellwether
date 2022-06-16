@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+body {
+    background-repeat: repeat;
+    background: #f9f9f9;
+    font-family: "Poppins", sans-serif;
+    color: #354558;
+    font-size: 13px;
+}
+
+@media (max-width: 991px) {
+    body {
+        overflow-x: hidden;
+    }
+}
+
+html {
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+    font-family: "Poppins", sans-serif;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+svg {
+    max-width: 100%;
+}
+
+* {
+    outline: none !important;
+}
+
+a {
+    color: #616f80;
+}
+
+a:hover, a:active, a:focus {
+    outline: 0;
+    text-decoration: none;
+}
+
+b, strong {
+    font-weight: 500;
+}
+
+.container-alt {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#wrapper {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: fixed;
+    background: #43c4c4;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding: 0 20px;
+}
+.out {
+    width: 100%;
+    height: 100%;
+    float: none;
+    display: table;
+}
+.in {
+    width: 100%;
+    height: 100%;
+    float: none;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.wrapper-page {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    display: inline-block;
+    box-shadow: rgb(0 0 0 / 20%) 0 0 6px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+.form-group{
+    text-align:left;
+}
+.form-control{
+    font-size:13px;
+    text-align:left;
+}
+label {
+    font-weight: 600;
+    display: block;
+}
+.card {
+    border: none;
+    -webkit-box-shadow: 0px 0px 13px 0px rgb(236 236 241 / 44%);
+    box-shadow: 0px 0px 13px 0px rgb(236 236 241 / 44%);
+
+}
+.btn-lg {
+    font-size: 15.6px;
+    border-radius: 3px;
+}
+.btn-primary {
+    background-color: #43c4c4;
+    border: 1px solid #43c4c4;
+    color:#ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background-color: #1aa29c !important;
+    border: 1px solid #1aa29c !important;
+    box-shadow:none;
+}
+.cpy-rights{
+    margin-top:5px;
+}
+.form-control:focus, .form-control:hover{
+    box-shadow:none;
+    border-color:#43c4c4;
+}

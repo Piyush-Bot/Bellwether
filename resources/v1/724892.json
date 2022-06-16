@@ -1,0 +1,8 @@
+{
+  "loginApp": "https://testdashboard.lightninglogistics.in/login-app/api/",
+  "chargingApp": "https://testdashboard.lightninglogistics.in/charging-app/api/",
+  "uselessApp": "https://testdashboard.lightninglogistics.in/rbca-app/api/",
+  "omsApp": "https://testdashboard.lightninglogistics.in/oms-app/api/",
+  "tmsApp": "https://testdashboard.lightninglogistics.in/task-app/api/",
+  "hrms": "https://testdashboard.lightninglogistics.in/hrms/api/v1"
+}

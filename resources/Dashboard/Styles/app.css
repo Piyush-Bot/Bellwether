@@ -1,0 +1,435 @@
+@import url("https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css");
+body {
+    background-repeat: repeat;
+    background: #f9f9f9;
+    font-family: "Poppins", sans-serif;
+    color: #354558;
+    font-size: 13px;
+}
+
+@media (max-width: 991px) {
+    body {
+        overflow-x: hidden;
+    }
+}
+
+html {
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+    font-family: "Poppins", sans-serif;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+svg {
+    max-width: 100%;
+}
+
+* {
+    outline: none !important;
+}
+
+a {
+    color: #616f80;
+}
+
+a:hover, a:active, a:focus {
+    outline: 0;
+    text-decoration: none;
+}
+
+b, strong {
+    font-weight: 500;
+}
+
+.container-alt {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#wrapper {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: fixed;
+    background: #43c4c4;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding: 0 20px;
+}
+.out {
+    width: 100%;
+    height: 100%;
+    float: none;
+    display: table;
+}
+.in {
+    width: 100%;
+    height: 100%;
+    float: none;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.wrapper-page {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    display: inline-block;
+    box-shadow: rgb(0 0 0 / 20%) 0 0 6px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+.form-group{
+    text-align:left;
+}
+.form-control{
+    font-size:13px;
+    text-align:left;
+}
+label {
+    font-weight: 600;
+    display: block;
+}
+.card {
+    border: none;
+    -webkit-box-shadow: 0px 0px 13px 0px rgb(236 236 241 / 44%);
+    box-shadow: 0px 0px 13px 0px rgb(236 236 241 / 44%);
+
+}
+.btn-lg {
+    font-size: 15.6px;
+    border-radius: 3px;
+}
+.btn-primary {
+    background-color: #43c4c4;
+    border: 1px solid #43c4c4;
+    color:#ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background-color: #1aa29c !important;
+    border: 1px solid #1aa29c !important;
+    box-shadow:none;
+}
+.cpy-rights{
+    margin-top:5px;
+}
+.form-control:focus, .form-control:hover{
+    box-shadow:none;
+    border-color:#43c4c4;
+}
+/*dashboard css*/
+.main_dboard {
+    width: 100%;
+    float: left;
+}
+.cus_header {
+    width: 100%;
+    float: left;
+    background: #ffffff;
+    box-shadow: rgb(0 0 0 / 10%) 0 0 8px;
+    padding: 0;
+}
+.top-bar {
+    width: 100%;
+    float: left;
+    background: #ffffff;
+}
+.top-bar .logo{
+    float: left;
+    width: 15%;
+    padding:3px 10px;
+}
+.top-bar .logo img{
+    max-width:110px;
+}
+.right-nav{
+    width:85%;
+    float:left;
+    background:#43c4c4;
+}
+
+.cus_header .right-nav-menu{
+    float: right;
+}
+
+.cus_header .usr-sts {
+    float: left;
+}
+
+.cus_header .usr-sts > a {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    font-size: 13px;
+    padding: 0 30px 0 15px;
+    transition: none;
+    color: #fff;
+}
+
+.cus_header .usr-sts > a i {
+    margin-right: 5px;
+}
+
+.cus_header .usr-sts.show > a,
+.cus_header .usr-sts > a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background:#1aa29c;
+}
+
+.cus_header .logout {
+    float: left;
+    margin-right: 0;
+}
+
+.cus_header .logout a i{
+    color:#ffffff;
+}
+.cus_header .logout a {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 15px;
+    text-transform: uppercase;
+    transition: none;
+}
+
+.cus_header .logout a:hover {
+    color: #ffffff;
+    background: #1aa29c;
+    text-decoration: none;
+}
+.dropdown-menu {
+    color: #212529;
+    border: none;
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
+    font-size: 13px;
+    box-shadow:rgba(0, 0, 0, 0.23) 0 0 15px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: #ffffff;
+    background: #43c4c4;
+}
+
+.dropdown-menu a {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dropdown .dropdown-toggle {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    content: '\f107';
+    font-family: FontAwesome;
+    border: none;
+    position: absolute;
+    top: 1px;
+    right: 15px;
+}
+
+.dropdown-menu-animated {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    margin-top: 20px !important;
+}
+.dropdown-menu.dropdown-menu-right {
+    -webkit-transform: none !important;
+    transform: none !important;
+    top: 100% !important;
+    left: auto !important;
+}
+.show > .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0px !important;
+}
+.usr-sts.dropdown.custom-menu > a{
+    padding: 3px 15px 0;
+}
+.usr-sts.dropdown a i{
+    font-size: 16px;
+    padding: 3px 0
+}
+.usr-sts.dropdown.custom-menu > a i{
+    margin-right:0;
+}
+.usr-sts.dropdown.custom-menu .dropdown-toggle::after{
+    display:none;
+}
+/*dashboard content css*/
+.content-page{
+    width:100%;
+    float:left;
+    padding:25px 20px;
+}
+.content-page .content{
+    width:100%;
+    float:left;
+}
+.card {
+    border: none;
+    -webkit-box-shadow: 0px 0px 13px 0px rgb(236 236 241 / 44%);
+    box-shadow: 0px 0px 13px 0px rgb(236 236 241 / 44%);
+    margin-bottom: 30px;
+    padding:17px;
+    border: 1px solid #c1c0c0;
+    border-radius: unset;
+    min-height:400px;
+}
+.card h6{
+    margin-top:0;
+    border-bottom:1px solid #dfdfdf;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.card .card-list{
+    width:100%;
+    float:left;
+    border:1px solid #dfdfdf;
+    border-radius:4px;
+}
+.card .card-list li{
+    padding:7px 10px;
+    float:left;
+    width:100%;
+    border-bottom:1px solid #dfdfdf;
+    padding:10px;
+}
+.card .card-list li:last-child{
+    border:none;
+}
+.card .card-list li.list-active{
+    background:#43c4c4;
+    color:#ffffff;
+}
+.card .card-list li.list-active a{
+    color:#ffffff;
+}
+.tick-icon{
+    float: right;
+    display: inline-block;
+    line-height: normal;
+    height: 15px;
+    margin-top: 2px;
+}
+.tick-icon i{
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.check-cus,
+.radio-cus {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.check-cus input[type=checkbox],
+.radio-cus input[type=radio] {
+    display: none
+}
+
+.check-cus label,
+.radio-cus label {
+    width: auto;
+    font-size: 14px;
+    padding-left: 30px;
+    font-weight: 400;
+    position: relative;
+    margin: 0;
+}
+
+.check-cus label:before,
+.radio-cus label:before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #888;
+    position: absolute;
+    top: 0;
+    border-radius: 100%;
+    left: 0;
+    z-index: 5;
+}
+
+.check-cus label:after,
+.radio-cus label:after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #0069C7;
+    position: absolute;
+    top: 9px;
+    border-radius: 100%;
+    left: 4px;
+    display: none
+}
+
+.check-cus label:before {
+    border-radius: 0;
+}
+
+.check-cus label:after {
+    content: '\f00c';
+    font-family: 'FontAwesome';
+    width: 10px;
+    height: 10px;
+    color: #59c6fb;
+    background: none;
+    position: absolute;
+    top: 0;
+    font-size: 13px;
+    border-radius: 100%;
+    left: 3px;
+    display: none;
+}
+
+.check-cus input[type=checkbox]:checked + label:after,
+.radio-cus input[type=radio]:checked + label:after {
+    display: block
+}
+
+.check-cus input[type=checkbox]:checked + label:before,
+.radio-cus input[type=radio]:checked + label:before {
+    border-color: #59c6fb;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}

@@ -1,0 +1,13 @@
+{
+    "/public/v1/components/auth.js": "/public/v1/components/auth.js",
+    "/public/v1/components/charging.js": "/public/v1/components/charging.js",
+    "/public/v1/components/booking.js": "/public/v1/components/booking.js",
+    "/public/v1/components/rbac.js": "/public/v1/components/rbac.js",
+    "/public/v1/components/configuration.js": "/public/v1/components/configuration.js",
+    "/public/v1/components/order.js": "/public/v1/components/order.js",
+    "/public/v1/components/task.js": "/public/v1/components/task.js",
+    "/public/v1/components/report.js": "/public/v1/components/report.js",
+    "/public/v1/components/misupload.js": "/public/v1/components/misupload.js",
+    "/public/v1/components/verification.js": "/public/v1/components/verification.js",
+    "/public/v1/components/jobapplication.js": "/public/v1/components/jobapplication.js"
+}

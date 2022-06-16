@@ -1,0 +1,111 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?kumdv8');
+  src:  url('../fonts/icomoon.eot?kumdv8#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?kumdv8') format('truetype'),
+    url('../fonts/icomoon.woff?kumdv8') format('woff'),
+    url('../fonts/icomoon.svg?kumdv8#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'icomoon1';
+  src:  url('../fonts/icomoon1.eot?9qcmvb');
+  src:  url('../fonts/icomoon1.eot?9qcmvb#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon1.ttf?9qcmvb') format('truetype'),
+  url('../fonts/icomoon1.woff?9qcmvb') format('woff'),
+  url('../fonts/icomoon1.svg?9qcmvb#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon1-"], [class*=" icon1-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon1' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-avatar:before {
+  content: "\e90c";
+}
+.icon-logout:before {
+  content: "\e90d";
+}
+.icon-email:before {
+  content: "\e909";
+}
+.icon-gear:before {
+  content: "\e90a";
+}
+.icon-phone-call:before {
+  content: "\e90b";
+}
+.icon-check-mark:before {
+  content: "\e906";
+}
+.icon-energy:before {
+  content: "\e907";
+}
+.icon-mouse:before {
+  content: "\e908";
+}
+.icon-pen:before {
+  content: "\e900";
+}
+.icon-access:before {
+  content: "\e901";
+}
+.icon-document:before {
+  content: "\e902";
+}
+.icon-gear-_1:before {
+  content: "\e903";
+}
+.icon-power-plug:before {
+  content: "\e904";
+}
+.icon-user:before {
+  content: "\e905";
+}
+.icon1-calendar:before {
+  content: "\e902";
+}
+.icon1-report:before {
+  content: "\e900";
+}
+.icon1-task-list:before {
+  content: "\e901";
+}
+.icon1-task:before {
+  content: "\e903";
+}
+.icon1-order:before {
+  content: "\e901";
+}
