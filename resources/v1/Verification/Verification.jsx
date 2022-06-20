@@ -155,19 +155,48 @@ const Verification = () => {
       });
   }, []);
 
+  //filter
   function handleSort() {
     let tempData = searchResult.slice();
-    console.log(tempData, leadIdValue, riderValue, riderStatusValue);
-    tempData = tempData.filter((data) => {
-      return (
-        data?.id == leadIdValue ||
-        data?.llempFirstname == riderValue ||
-        data?.riderStatusDetails?.description == riderStatusValue ||
-        data?.llempCity === cityValue
-      );
+    const temp = [
+      leadIdValue?.value,
+      riderValue?.value,
+      riderStatusValue?.value,
+      cityValue?.value,
+    ];
+    const keys = [
+      "id",
+      "llempFirstname",
+      "riderStatusDetails.description",
+      "llempCity",
+    ];
+    temp.forEach((element, index) => {
+      if (element) {
+        tempData = tempData.filter((item) => {
+          return keys[index].includes(".")
+            ? item[keys[index].split(".")[0]][keys[index].split(".")[1]]
+                .toString()
+                .toLowerCase() === element.toString().toLowerCase()
+            : item[keys[index]].toString().toLowerCase() ===
+                element.toString().toLowerCase();
+        });
+      }
     });
     setEmployeeDetails(tempData);
   }
+
+  // function handleSort() {
+  //   let tempData = searchResult.slice();
+  //   tempData = tempData.filter((data) => {
+  //     return (
+  //       data?.id == leadIdValue.value ||
+  //       data?.llempFirstname == riderValue.value ||
+  //       data?.riderStatusDetails?.description == riderStatusValue.value ||
+  //       data?.llempCity === cityValue.value
+  //     );
+  //   });
+  //   setEmployeeDetails(tempData);
+  // }
 
   function resetHandler() {
     setLeadIdValue("");
@@ -201,10 +230,6 @@ const Verification = () => {
 
   function searchHandler(event) {
     let tempData = searchResult.slice();
-    console.log("temp----", tempData);
-    // tempData = tempData.filter((data) =>
-    //   data?.llempFirstname.toLowerCase().includes(event?.toLowerCase())
-    // );
     tempData = tempData.filter(
       (data) =>
         data?.llempFirstname?.toLowerCase().includes(event?.toLowerCase()) ||
@@ -213,6 +238,7 @@ const Verification = () => {
           .includes(event?.toLowerCase()) ||
         data?.llempContactNumber_2?.toLowerCase().includes(event?.toLowerCase())
     );
+
     setEmployeeDetails(tempData);
   }
 
@@ -222,7 +248,6 @@ const Verification = () => {
     } else if (key == "rider_name") {
       setRiderValue(value);
     } else if (key == "rider_status") {
-      console.log(value);
       setRiderStatusValue(value);
     } else if (key == "city_name") {
       setCityValue(value);
@@ -230,7 +255,6 @@ const Verification = () => {
   };
 
   function handlePageChange(pageNumber) {
-    console.log(`active page is ${pageNumber}`);
     setPaginationValues({
       activePage: pageNumber,
     });
@@ -488,9 +512,8 @@ const Verification = () => {
                   isClearable={isClearable}
                   isSearchable={isSearchable}
                   options={leadIdData}
-                  onChange={(e) =>
-                    handleFilterInputsChangeEvent("lead_id", e?.value)
-                  }
+                  value={leadIdValue}
+                  onChange={(e) => handleFilterInputsChangeEvent("lead_id", e)}
                   defaultValue={leadIdValue}
                 />
               </div>
@@ -508,8 +531,9 @@ const Verification = () => {
                   isClearable={isClearable}
                   isSearchable={isSearchable}
                   options={riderData}
+                  value={riderValue}
                   onChange={(e) =>
-                    handleFilterInputsChangeEvent("rider_name", e?.value)
+                    handleFilterInputsChangeEvent("rider_name", e)
                   }
                   defaultValue={riderValue}
                 />
@@ -528,8 +552,9 @@ const Verification = () => {
                   isClearable={isClearable}
                   isSearchable={isSearchable}
                   options={riderStatusData}
+                  value={riderStatusValue}
                   onChange={(e) =>
-                    handleFilterInputsChangeEvent("rider_status", e?.value)
+                    handleFilterInputsChangeEvent("rider_status", e)
                   }
                   defaultValue={riderStatusValue}
                 />
@@ -548,8 +573,9 @@ const Verification = () => {
                   isClearable={isClearable}
                   isSearchable={isSearchable}
                   options={cityData}
+                  value={cityValue}
                   onChange={(e) =>
-                    handleFilterInputsChangeEvent("city_name", e?.value)
+                    handleFilterInputsChangeEvent("city_name", e)
                   }
                   defaultValue={cityValue}
                 />

@@ -152,7 +152,6 @@ const VerificationDetails = (props) => {
     };
 
     // get-enums
-
     axios(enumsConfig)
       .then(function (response) {
         console.log(response.data);
@@ -171,7 +170,6 @@ const VerificationDetails = (props) => {
       });
 
     // get-profiles
-
     var profileConfig = {
       method: "get",
       url:
@@ -309,7 +307,7 @@ const VerificationDetails = (props) => {
               </div>
               <div className="col-md-6  text-right">
                 <Link
-                  to={"/app/task-app"}
+                  to={"/app/verification-app"}
                   className="btn btn-primary btn-sm waves-effect waves-light"
                 >
                   <i className="fa fa-angle-left"> </i> Back
@@ -374,9 +372,13 @@ const VerificationDetails = (props) => {
                           <div className="assined-name pl-2">
                             <span>Name</span>
                             <h5>
-                              {profileDetails.llempFirstname
-                                ? profileDetails.llempFirstname
-                                : " - "}
+                              {profileDetails?.llempFirstname
+                                ? profileDetails?.llempFirstname
+                                : "-"}
+                              {"  "}
+                              {profileDetails?.llempLastname
+                                ? profileDetails?.llempLastname
+                                : ""}
                             </h5>
                           </div>
                         </div>
@@ -480,8 +482,8 @@ const VerificationDetails = (props) => {
                       </Col>
                     </Row>
                     <Row className="padding-top">
-                      <Col>
-                        {/* Employee Id */}
+                      <Col className="col-sm-8 col-md-8">
+                        {/* Permanent Address */}
                         <div
                           className="d-flex align-items-center assigned-details"
                           style={{
@@ -498,21 +500,9 @@ const VerificationDetails = (props) => {
                           </div>
                         </div>
                       </Col>
-                      <Col>
-                        {/* Rider Name */}
-                        <div className="d-flex assigned-details">
-                          <div className="assined-name pl-2">
-                            <span>Residential Address</span>
-                            <h5>
-                              {profileDetails.llempResidenceAddress
-                                ? profileDetails.llempResidenceAddress
-                                : " - "}
-                            </h5>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col>
-                        {/* Rider Name */}
+
+                      <Col className="col-sm-4 col-md-4">
+                        {/* Permanent Address Proof Type */}
                         <div className="d-flex assigned-details">
                           <div className="assined-name pl-2">
                             <span>Permanent Address Proof Type</span>
@@ -551,8 +541,21 @@ const VerificationDetails = (props) => {
                       </Col>
                     </Row>
                     <Row className="padding-top">
-                      <Col>
-                        {/* Rider Name */}
+                      <Col className="col-sm-8 col-md-8">
+                        {/* Residential Address */}
+                        <div className="d-flex assigned-details">
+                          <div className="assined-name pl-2">
+                            <span>Residential Address</span>
+                            <h5>
+                              {profileDetails.llempResidenceAddress
+                                ? profileDetails.llempResidenceAddress
+                                : " - "}
+                            </h5>
+                          </div>
+                        </div>
+                      </Col>
+                      <Col className="col-sm-4 col-md-4">
+                        {/* Residential Address Proof Type */}
                         <div className="d-flex assigned-details">
                           <div className="assined-name pl-2">
                             <span>Residential Address Proof Type</span>
@@ -608,7 +611,7 @@ const VerificationDetails = (props) => {
                   >
                     <Row className="padding-top">
                       <Col>
-                        {/* Lead Id */}
+                        {/* Nominee Name */}
                         <div className="d-flex  align-items-center assigned-details">
                           <div className="assined-name pl-2">
                             <span>Nominee Name</span>
