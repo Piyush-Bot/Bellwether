@@ -278,7 +278,6 @@ const Verification = () => {
                   <div className="search-input">
                     <Typeahead
                       id="basic-typeahead-single"
-                      // labelKey="llempFirstname"
                       labelKey={(option) => `${option.llempFirstname}`}
                       options={employeeDetails}
                       onChange={(e) => {

@@ -10,7 +10,6 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 import ReactTooltip from "react-tooltip";
-
 import { HRMS_BASE_URL } from "../Auth/Context/AppConstant";
 import BreadCrumb from "../Common/BreadCrumb";
 import TableHeader from "../Common/TableHeader";
@@ -43,7 +42,6 @@ const HeaderText = ({ text, style }) => {
 };
 
 function verifyDocuments(status, leadId, identificationId) {
-  console.log("status", status, leadId, identificationId);
   try {
     axios
       .put(
@@ -61,7 +59,6 @@ function verifyDocuments(status, leadId, identificationId) {
         }
       )
       .then((resp) => {
-        console.log(resp, "resps");
         //   setOtpVerify(true);
         //   setAdharResp(resp?.data?.data);
         //   setIsEnableButtons(true);
@@ -79,7 +76,6 @@ function verifyDocuments(status, leadId, identificationId) {
 let token = localStorage.getItem("app-ll-token");
 
 const VerificationDetails = (props) => {
-  console.log(props, "propsss");
   const [show, setShow] = useState(false);
   const [modalResponse, setModalResponse] = useState(null);
   const [modalType, setModalType] = useState(null);
@@ -180,6 +176,7 @@ const VerificationDetails = (props) => {
       },
     };
 
+    // get-profilesImage
     var profileImage = {
       method: "get",
       url: `${HRMS_BASE_URL}/file-upload/get-file-url/`,
@@ -190,10 +187,9 @@ const VerificationDetails = (props) => {
 
     axios(profileConfig)
       .then(function (response) {
-        //   console.log(JSON.stringify(response.data));
         profileImage.url += response.data.data?.llempProfileImage;
         var data = response.data;
-        console.log("profile data -> " + data["data"]);
+        console.log("pro id data", data["data"]);
         setProfileDetails(data["data"]);
         return axios(profileImage);
       })
@@ -203,19 +199,18 @@ const VerificationDetails = (props) => {
       .catch(function (error) {
         console.log(error);
       });
-
-    console.log("identificationEnums" + identificationEnums);
   }, []);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+  };
 
   const loadImage = async (front, back) => {
-    console.log(front, back);
     console.log(errorMessage);
     setFrontImage("");
     setBackImage("");
     setIsLoaded(true);
-    if (front && front != "")
+    if (front && front.length > 0)
       axios
         .get(`${HRMS_BASE_URL}/file-upload/get-file-url/${front}`, {
           headers: {
@@ -223,7 +218,7 @@ const VerificationDetails = (props) => {
           },
         })
         .then((resp) => {
-          console.log("front");
+          console.log("front-----hit", resp?.data?.data);
           setFrontImage(resp?.data?.data?.file_path);
           setIsLoaded(false);
         })
@@ -232,7 +227,8 @@ const VerificationDetails = (props) => {
           setIsLoaded(false);
           setErrorMessage("Something went to wrong");
         });
-    if (back & (back != ""))
+
+    if (back && back.length > 0)
       axios
         .get(`${HRMS_BASE_URL}/file-upload/get-file-url/${back}`, {
           headers: {
@@ -240,7 +236,7 @@ const VerificationDetails = (props) => {
           },
         })
         .then((resp) => {
-          console.log("back");
+          console.log("back-----hit", resp?.data?.data);
           setBackImage(resp?.data?.data?.file_path);
           setIsLoaded(false);
         })
@@ -251,7 +247,20 @@ const VerificationDetails = (props) => {
         });
   };
 
+  const setDataType = async (type) => {
+    const id = type === "DL" ? 342 : 341;
+    let data = props?.location?.state?.llEmpIdentificationList?.find((e) => {
+      return e?.identificationTypeId === id;
+    });
+    setProofType(data);
+    setModalResponse(data);
+    await loadImage(data?.picFront, data?.picBack);
+    setModalType("view");
+    setShow(true);
+  };
+
   function renderSwitch(param) {
+    console.log("params render hit", param);
     switch (param?.identificationTypeDetails?.id) {
       case 341:
         return (
@@ -438,9 +447,11 @@ const VerificationDetails = (props) => {
                     <Row className="padding-top">
                       <Col>
                         {/* Rider Status */}
+                        {profileDetails.riderStatusDetails}
                         <div className="d-flex align-items-center assigned-details">
                           <div className="assined-name pl-2">
                             <span>Status</span>
+
                             <h5>
                               {profileDetails.riderStatusDetails?.description
                                 ? profileDetails.riderStatusDetails?.description
@@ -523,14 +534,17 @@ const VerificationDetails = (props) => {
                                     marginLeft: "10px",
                                   }}
                                   onClick={async () => {
-                                    setModalResponse(proofType);
-                                    await loadImage(
-                                      proofType?.picFront,
-                                      proofType?.picBack
-                                    );
-                                    setModalType("view");
-                                    setShow(true);
+                                    setDataType("DL");
                                   }}
+                                  // onClick={async () => {
+                                  //   setModalResponse(proofType);
+                                  //   await loadImage(
+                                  //     proofType?.picFront,
+                                  //     proofType?.picBack
+                                  //   );
+                                  //   setModalType("view");
+                                  //   setShow(true);
+                                  // }}
                                 >
                                   <i className="fa fa-eye"> </i>
                                 </div>
@@ -554,11 +568,13 @@ const VerificationDetails = (props) => {
                           </div>
                         </div>
                       </Col>
+
                       <Col className="col-sm-4 col-md-4">
                         {/* Residential Address Proof Type */}
                         <div className="d-flex assigned-details">
                           <div className="assined-name pl-2">
                             <span>Residential Address Proof Type</span>
+
                             <h5>
                               {profileDetails?.llempResidentAddressProofType
                                 ? identificationEnums[
@@ -577,14 +593,17 @@ const VerificationDetails = (props) => {
                                     marginLeft: "10px",
                                   }}
                                   onClick={async () => {
-                                    setModalResponse(proofType);
-                                    await loadImage(
-                                      proofType?.picFront,
-                                      proofType?.picBack
-                                    );
-                                    setModalType("view");
-                                    setShow(true);
+                                    setDataType("AADHAAR");
                                   }}
+                                  // onClick={async () => {
+                                  //   setModalResponse(proofType);
+                                  //   await loadImage(
+                                  //     proofType?.picFront,
+                                  //     proofType?.picBack
+                                  //   );
+                                  //   setModalType("view");
+                                  //   setShow(true);
+                                  // }}
                                 >
                                   <i className="fa fa-eye"> </i>
                                 </div>
@@ -637,7 +656,7 @@ const VerificationDetails = (props) => {
                         </div>
                       </Col>
                       <Col>
-                        {/* Rider Name */}
+                        {/* Relationship Type */}
                         <div className="d-flex assigned-details">
                           <div className="assined-name pl-2">
                             <span>Relationship Type</span>
@@ -722,6 +741,7 @@ const VerificationDetails = (props) => {
                                           marginLeft: "10px",
                                         }}
                                         onClick={async () => {
+                                          console.log("fun data hiit", data);
                                           setModalResponse(data);
                                           await loadImage(
                                             data?.picFront,
@@ -760,7 +780,7 @@ const VerificationDetails = (props) => {
       {show && (
         <Modal show={show} onHide={handleClose} size="lg">
           <Modal.Header>
-            <Modal.Title>{modalResponse?.type}</Modal.Title>
+            <Modal.Title>{modalResponse?.type} </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {errorMessage ? (
@@ -800,6 +820,7 @@ const VerificationDetails = (props) => {
                         ) : (
                           <img
                             src={backImage}
+                            alt="back image"
                             style={{
                               height: "350px",
                               width: "350px",

@@ -9,6 +9,7 @@ import ReactTooltip from "react-tooltip";
 import TableNoDataFound from "../Common/TableNoDataFound";
 import moment from "moment";
 import { HRMS_BASE_URL } from "../Auth/Context/AppConstant";
+import axios from "axios";
 
 const centerAlign = {
   display: "flex",
@@ -39,7 +40,6 @@ let token = localStorage.getItem("app-ll-token");
 const JobApplicationDetails = (props) => {
   const [jobDetails, setJobDetails] = useState({});
   const [cityName, setCityName] = useState("");
-
   const [vehicleDetails, setVehicleDetails] = useState({});
   const [show, setShow] = useState(false);
   const [modalResponse, setModalResponse] = useState(null);
@@ -87,7 +87,6 @@ const JobApplicationDetails = (props) => {
     axios(config)
       .then(function (response) {
         var data = response.data;
-        console.log("hit--jb", data);
         setJobDetails(data["data"][0]);
         var cityId = data["data"][0]["llbPreferredCity"];
         vehicleConfig.url += data["data"][0].leadData.id;
@@ -117,6 +116,7 @@ const JobApplicationDetails = (props) => {
       })
       .then((res) => {
         setVehicleDetails(res.data.data);
+        console.log("hellllllooo", res.data.data);
         // const isFrontImgExist = !!res.data.data.llbRcCopyFront;
         // const isBackImgExist = !!res.data.data.llbRcCopyBack;
         // const vehicleDetailsCopy = {
@@ -141,6 +141,48 @@ const JobApplicationDetails = (props) => {
   }, []);
 
   const handleClose = () => setShow(false);
+
+  const loadImage = async (front, back) => {
+    console.log(errorMessage);
+    setFrontImage("");
+    setBackImage("");
+    setIsLoaded(true);
+    if (front && front.length > 0)
+      axios
+        .get(`${HRMS_BASE_URL}/file-upload/get-file-url/${front}`, {
+          headers: {
+            Authorization: `llBearer ${token}`,
+          },
+        })
+        .then((resp) => {
+          console.log("front-----hit", resp?.data?.data);
+          setFrontImage(resp?.data?.data?.file_path);
+          setIsLoaded(false);
+        })
+        .catch((err) => {
+          console.log("front err");
+          setIsLoaded(false);
+          setErrorMessage("Something went to wrong");
+        });
+
+    if (back && back.length > 0)
+      axios
+        .get(`${HRMS_BASE_URL}/file-upload/get-file-url/${back}`, {
+          headers: {
+            Authorization: `llBearer ${token}`,
+          },
+        })
+        .then((resp) => {
+          console.log("back-----hit", resp?.data?.data);
+          setBackImage(resp?.data?.data?.file_path);
+          setIsLoaded(false);
+        })
+        .catch((err) => {
+          setIsLoaded(false);
+          console.log("back err");
+          setErrorMessage("Something went to wrong");
+        });
+  };
 
   const breadCrumbs = [
     { name: "HRMS", url: "/app/job-app", class: "breadcrumb-item" },
@@ -412,6 +454,10 @@ const JobApplicationDetails = (props) => {
                                 }}
                                 onClick={async () => {
                                   setModalResponse(vehicleDetails);
+                                  await loadImage(
+                                    vehicleDetails?.llbRcCopyFront,
+                                    vehicleDetails?.llbRcCopyBack
+                                  );
                                   setModalType("view");
                                   setShow(true);
                                 }}

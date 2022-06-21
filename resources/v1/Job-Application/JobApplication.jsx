@@ -93,9 +93,11 @@ const JobApplication = () => {
       })
       .then((resp) => {
         if (resp?.data?.data?.length != 0) {
+          console.log("qwerty ", resp?.data);
+
           setIsLoaded(false);
-          setJobDetails(resp?.data?.data?.content);
-          setSearchResult(resp?.data?.data?.content);
+          setJobDetails(resp?.data?.data?.jobs?.content);
+          setSearchResult(resp?.data?.data?.jobs?.content);
         } else {
           setErrorMessage("Data not found");
         }
@@ -119,7 +121,6 @@ const JobApplication = () => {
   }
 
   const getOptions = (option) => {
-    console.log("tttteqe", option);
     return `${option?.id} - ${option?.leadData?.llempFirstname} - ${option?.leadData?.llempContactNumber}`;
   };
 
@@ -287,7 +288,6 @@ const JobApplication = () => {
                   >
                     <i className="fa fa-refresh mr-1"> </i>Reset
                   </a>
-
                   <a
                     className="btn btn-primary btn-sm waves-effect waves-light mr-3"
                     onClick={() => setShowModal(true)}
